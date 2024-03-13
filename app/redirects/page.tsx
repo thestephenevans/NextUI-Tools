@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code"
-import { Card, CardHeader, CardBody, Avatar, User, Input, Button, Checkbox } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Avatar, User, Input, Button, Checkbox, RadioGroup, Radio } from "@nextui-org/react";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
@@ -62,10 +62,10 @@ export default function Page(){
           </form>
           <div className='flex flex-col gap-5 items-center text-center'>
             <div className='flex flex-row gap-2' onChange={setSelection}>
-              <label htmlFor="302-selection"><strong>302</strong> </label>
-              <input type='radio' className='302-selection' name="selection" value='302' checked={redirectType === '302'}/>
-              <label htmlFor="301-selection"><strong>301</strong> </label>
-              <input type='radio' className='301-selection' name="selection" value='301' checked={redirectType === '301'}/>
+                <RadioGroup label="Select your redirect type" defaultValue='302' onValueChange={setRedirectType} className='flex items-center text-left'>
+                    <Radio value="302" description="Temporary redirect">302</Radio>
+                    <Radio value="301" description="Permanent redirect">301</Radio>
+                </RadioGroup>
             </div>
             
             <h2 className={subtitle()}><strong>Redirect to:</strong> {redirectTo ? redirectTo : 'No redirect location set'}</h2>
