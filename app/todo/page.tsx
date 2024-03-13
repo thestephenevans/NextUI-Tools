@@ -23,12 +23,14 @@ export default function Page(){
     const [list, setList] = useState<Todo[]>([]);
     const [input, setInput] = useState<string>(''); 
     const [originalList, setOriginalList] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const storedList = localStorage.getItem('todoList');
         if (storedList) {
             setList(JSON.parse(storedList));
             setOriginalList(JSON.parse(storedList));
+            setIsLoaded(true);
         }
     }, []); // Empty dependency array to run this effect only once when component mounts
 
@@ -74,7 +76,7 @@ export default function Page(){
 
                 <div className='flex flex-col gap-5 w-6/12'>
                     {list && list.map((item, i) => (
-                    <Skeleton className="rounded-lg" isLoaded>
+                    <Skeleton className="rounded-lg" isLoaded={isLoaded}>
                       <Card key={i} className={clsx(
                         {
                             'bg-green-600': item.completed,
