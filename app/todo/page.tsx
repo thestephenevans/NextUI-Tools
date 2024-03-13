@@ -73,8 +73,8 @@ export default function Page(){
                 </div>
 
                 <div className='flex flex-col gap-5 w-6/12'>
-                    {list && list.map((item) => (
-                      <Card className={clsx(
+                    {list && list.map((item, i) => (
+                      <Card key={i} className={clsx(
                         {
                             'bg-green-600': item.completed,
                             'bg-gray-900':!item.completed
