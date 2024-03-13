@@ -27,7 +27,7 @@ export default function Home() {
 	return (
 		<section className="flex flex-col gap-4 py-8 md:py-10">
 			<div className="inline-block max-w-lg">
-				<h1 className={title({ color: "violet" })}>Stephen's&nbsp;</h1>
+				<h1 className={title({ color: "violet" })}>Stephen&apos;s&nbsp;</h1>
 				<h1 className={title()}>
 					Tools
 				</h1>
