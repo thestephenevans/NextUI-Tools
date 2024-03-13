@@ -37,7 +37,7 @@ export default function Page(){
         setList(newList);
     }
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+    function handleSubmit(e: React.MouseEvent<HTMLButtonElement>){
         e.preventDefault();
         setList([...list, {id: Date.now(), value: input, completed: false}]);
         setInput('');
