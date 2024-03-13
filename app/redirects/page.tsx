@@ -49,14 +49,14 @@ export default function Page(){
     return (
       <div className='flex flex-col items-center gap-10'>
         <h1 className={`${title({color: "cyan"})}`}>Redirects</h1>
-        <div className = "flex flex-col justify-center items-center gap-5">
-          <form className='flex flex-col gap-5 items-center' onSubmit={e => e.preventDefault()}>
+        <div className = "flex flex-col justify-center items-center gap-5 w-full">
+          <form className='flex flex-col gap-5 items-center w-6/12' onSubmit={e => e.preventDefault()}>
             <Input value = {redirectTo} type="text" className='toURL' label="Redirect to" onChange={e => handleSetRedirect(e.target.value)}/>
           </form>
   
-          <form className='flex flex-col gap-5 items-center' onSubmit={addRedirect}>
+          <form className='flex flex-col gap-5 items-center w-6/12' onSubmit={addRedirect}>
             <Input value={oldSlug} type="text" className='fromURL' label="Redirect slugs" onChange={e => handleSetOldSlug(e.target.value)}/>
-            <Button color = "primary" type='submit'>Submit</Button>
+            <Button color = "primary" type='submit' className="w-full">Submit</Button>
           </form>
           <div className='flex flex-col gap-5 items-center text-center'>
             <div className='flex flex-row gap-2' onChange={setSelection}>
