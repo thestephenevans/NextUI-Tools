@@ -76,8 +76,8 @@ export default function Page(){
 
                 <div className='flex flex-col gap-5 w-6/12'>
                     {list && list.map((item, i) => (
-                    <Skeleton className="rounded-lg" isLoaded={isLoaded}>
-                      <Card key={i} className={clsx(
+                    <Skeleton key={i} className="rounded-lg" isLoaded={isLoaded}>
+                      <Card className={clsx(
                         {
                             'bg-green-600': item.completed,
                             'bg-gray-900':!item.completed
