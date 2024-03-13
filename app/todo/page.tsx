@@ -37,7 +37,7 @@ export default function Page(){
         setList(newList);
     }
 
-    function handleSubmit(e: React.MouseEvent<HTMLButtonElement>){
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         setList([...list, {id: Date.now(), value: input, completed: false}]);
         setInput('');
@@ -66,7 +66,7 @@ export default function Page(){
                 <div className='flex flex-col gap-5 w-6/12'>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
                         <Input type="text" label="Add task" value={input} onChange={(e) => setInput(e.target.value)}/>
-                        <Button color="primary" onClick={handleSubmit}>
+                        <Button color="primary" type='submit'>
                             Add
                         </Button>
                     </form>
