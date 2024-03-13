@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code"
-import { Card, CardHeader, CardBody, Avatar, User, Input, Button, Checkbox } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Avatar, User, Input, Button, Checkbox, Skeleton } from "@nextui-org/react";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
@@ -74,6 +74,7 @@ export default function Page(){
 
                 <div className='flex flex-col gap-5 w-6/12'>
                     {list && list.map((item, i) => (
+                    <Skeleton className="rounded-lg" isLoaded>
                       <Card key={i} className={clsx(
                         {
                             'bg-green-600': item.completed,
@@ -89,6 +90,7 @@ export default function Page(){
                             </Button>
                         </CardBody>
                       </Card>  
+                    </Skeleton>
                     ))}
                 </div>
             </div>
