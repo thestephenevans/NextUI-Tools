@@ -27,13 +27,13 @@ export default function Home() {
 	return (
 		<section className="flex flex-col gap-4 py-8 md:py-10">
 			<div className="inline-block max-w-lg">
-				<h1 className={title({ color: "violet" })}>Testing&nbsp;</h1>
+				<h1 className={title({ color: "violet" })}>Stephen's&nbsp;</h1>
 				<h1 className={title()}>
 					Tools
 				</h1>
 			</div>
 			{Object.entries(users).map(([key, user]) => (
-				<Card key={key} className='w-3/12'>
+				<Card key={key} className='w-full'>
 					<CardHeader>
 						<User name = {user.name} description = {user.description} />
 					</CardHeader>
