@@ -12,7 +12,7 @@ import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import Users from "@/app/data/users";
 
-import { fetchUsers } from '@/public/data/sokada';
+import { fetchUsers } from '@/app/api/sokada';
 import { UserType } from '@/app/types';
 import { Performance } from '@/app/types';
 import { report } from '@/app/data/lighthouse';
