@@ -90,7 +90,7 @@ export default function Home() {
 										label="Performance"
 										size="lg"
 										value={performance * 100}
-										color={(performance * 100) < 70 ? "warning" : "success"}
+										color={(performance * 100) < 90 ? "warning" : "success"}
 										showValueLabel={true}
 										strokeWidth={4}
 										classNames={{
