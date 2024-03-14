@@ -1,3 +1,4 @@
+'use server'
 import { Post, UserType } from '@/app/types'
 import { unstable_noStore as noStore } from 'next/cache';
 
