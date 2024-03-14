@@ -38,7 +38,7 @@ export default function Page(){
     return(
         <div>
             <h1 className={title({color: 'violet'})}>Posts</h1>
-            <div className='grid grid-cols-2 gap-10 mt-16'>
+            <div className='grid md:grid-cols-2 gap-10 mt-16 sm: grid-cols-1'>
                 {posts.map(post => (
                     <Card key={post.id} className='flex flex-col flex-1'>
                         <CardHeader>
