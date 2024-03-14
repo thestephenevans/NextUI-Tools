@@ -50,11 +50,11 @@ export default function Page(){
       <div className='flex flex-col items-center gap-10'>
         <h1 className={`${title({color: "cyan"})}`}>Redirects</h1>
         <div className = "flex flex-col justify-center items-center gap-5 w-full">
-          <form className='flex flex-col gap-5 items-center w-6/12' onSubmit={e => e.preventDefault()}>
+          <form className='flex flex-col gap-5 items-center md:w-6/12 w-full' onSubmit={e => e.preventDefault()}>
             <Input value = {redirectTo} type="text" className='toURL' label="Redirect to" onChange={e => handleSetRedirect(e.target.value)}/>
           </form>
   
-          <form className='flex flex-col gap-5 items-center w-6/12' onSubmit={addRedirect}>
+          <form className='flex flex-col gap-5 items-center md:w-6/12 w-full' onSubmit={addRedirect}>
             <Input value={oldSlug} type="text" className='fromURL' label="Redirect slugs" onChange={e => handleSetOldSlug(e.target.value)}/>
             <Button color = "primary" type='submit' className="w-full">Submit</Button>
           </form>

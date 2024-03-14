@@ -16,6 +16,10 @@ export const siteConfig = {
 	  label: "Redirections",
 	  href: "/redirects",
 	},
+	{
+		label: "Blog Posts",
+		href: "/blogs",
+	},
     
 	],
 	navMenuItems: [
@@ -30,6 +34,10 @@ export const siteConfig = {
 		{
 			label: "Redirects",
 			href: "/redirects",
+		},
+		{
+			label: "Blog Posts",
+			href: "/blogs",
 		},
 	],
 	links: {

@@ -65,7 +65,7 @@ export default function Page(){
             <div className="flex justify-center items-center flex-col gap-10">
                 <h1 className={title({color: "blue"})}>Todo List</h1>
 
-                <div className='flex flex-col gap-5 w-6/12'>
+                <div className='flex flex-col gap-5 md:w-6/12 w-full'>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
                         <Input type="text" label="Add task" value={input} onChange={(e) => setInput(e.target.value)}/>
                         <Button color="primary" type='submit'>
@@ -74,7 +74,7 @@ export default function Page(){
                     </form>
                 </div>
 
-                <div className='flex flex-col gap-5 w-6/12'>
+                <div className='flex flex-col gap-5 md:w-6/12 w-full'>
                     {list && list.map((item, i) => (
                     <Skeleton key={i} className="rounded-lg" isLoaded={isLoaded}>
                       <Card className={clsx(
@@ -83,7 +83,7 @@ export default function Page(){
                             'bg-gray-900':!item.completed
                         }
                       )}>
-                        <CardBody className='flex flex-row align-center justify-between gap-3'>
+                        <CardBody className='flex md:flex-row align-center justify-between gap-3 flex-col'>
                             <Checkbox checked={item.completed} defaultSelected={item.completed ? true : undefined} lineThrough onChange={(e) => handleCompleted(item.id, e.target.checked)}>
                                 <span className='flex flex-col justify-center'>{item.value}</span>
                             </Checkbox>

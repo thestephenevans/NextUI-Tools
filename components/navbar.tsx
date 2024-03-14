@@ -26,6 +26,7 @@ import {
 	HeartFilledIcon,
 	SearchIcon,
 } from "@/components/icons";
+import {Image} from "@nextui-org/react";
 
 import { Logo } from "@/components/icons";
 
@@ -56,7 +57,7 @@ export const Navbar = () => {
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
 					<NextLink className="flex justify-start items-center gap-1" href="/">
-						<Logo />
+						<Image src="https://www.sokada.co.uk//wp-content//uploads//2019//10//favicon.ico"/>
 						<p className="font-bold text-inherit">Stephen&apos;s Tools</p>
 					</NextLink>
 				</NavbarBrand>
