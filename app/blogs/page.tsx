@@ -42,7 +42,7 @@ export default function Page(){
                 {posts.map(post => (
                     <Card key={post.id} className='flex flex-col flex-1'>
                         <CardHeader>
-                            <Image className = "w-full" src = {post._embedded['wp:featuredmedia']['0'].source_url} />
+                            <Image className = "w-full" src = {post._embedded['wp:featuredmedia']['0'].source_url} alt='Blog Image' />
                         </CardHeader>
                         <CardBody>
                             <div className='flex flex-col flex-1 gap-10 justify-between'>
