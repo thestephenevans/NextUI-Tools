@@ -57,7 +57,7 @@ export default function Home() {
 					Tools
 				</h1>
 			</div>
-			<div className='flex flex-row justify-between'>
+			<div className='flex md:flex-row-reverse justify-between flex-col-reverse gap-10'>
 				<div className='flex flex-col gap-5'>
 					{users.map((user, key) => (
 						<Card key={key} className='w-full'>
@@ -85,7 +85,7 @@ export default function Home() {
 									<h2 className={title()}>Sokada&nbsp;</h2>
 									<h2 className={title({color:'green'})}>Website Stats</h2>
 								</div>
-								<div className='flex flex-row gap-5'>
+								<div className='flex md:flex-row gap-5 flex-col'>
 									<CircularProgress
 										label="Performance"
 										size="lg"
