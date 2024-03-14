@@ -13,7 +13,7 @@ import { data } from 'autoprefixer';
 import clsx from 'clsx';
 import { ChangeEvent } from 'react';
 
-import { fetchPosts } from '@/app/api/sokada';
+import { fetchPosts } from '@/public/data/sokada';
 import { Post } from '@/app/types';
 
 export default function Page(){
