@@ -51,8 +51,8 @@ export default function Home() {
 
 	return (
 		<section className="flex flex-col gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg">
-				<h1 className={title({ color: "violet" })}>Stephen&apos;s&nbsp;</h1>
+			<div className="inline-block max-w-lg mb-10">
+				<h1 className={title({ color: "cyan" })}>Stephen&apos;s&nbsp;</h1>
 				<h1 className={title()}>
 					Tools
 				</h1>
@@ -81,7 +81,10 @@ export default function Home() {
 					<Card className='w-full'>
 						<Suspense fallback={<p>Loading...</p>}>
 							<CardHeader className='flex flex-col text-center gap-5'>
-								<h2 className={subtitle()}>Sokada Website Stats</h2>
+								<div className='inline-block mb-10'>
+									<h2 className={title()}>Sokada&nbsp;</h2>
+									<h2 className={title({color:'green'})}>Website Stats</h2>
+								</div>
 								<div className='flex flex-row gap-5'>
 									<CircularProgress
 										label="Performance"
