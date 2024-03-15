@@ -64,7 +64,7 @@ export default function Home() {
 							<Suspense fallback={<p>Loading...</p>}>
 								<CardHeader>
 									<User name = {user.name} description = {(
-										<Link href={user.link} size="sm" isExternal>
+										<Link className = "text-[12px]" href={user.link} size="sm" isExternal>
 											{user.link}
 										</Link>
 									)} avatarProps={{
@@ -81,8 +81,8 @@ export default function Home() {
 					<Card className='w-full'>
 						<Suspense fallback={<p>Loading...</p>}>
 							<CardHeader className='flex flex-col text-center gap-5'>
-								<div className='inline-block mb-10'>
-									<h2 className={title()}>Sokada&nbsp;</h2>
+								<div className='md:inline-block mb-10 inline-flex flex-col'>
+									<h2 className={title()}>Sokada </h2>
 									<h2 className={title({color:'green'})}>Website Stats</h2>
 								</div>
 								<div className='flex md:flex-row gap-5 flex-col'>
