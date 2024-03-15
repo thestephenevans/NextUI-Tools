@@ -57,8 +57,7 @@ export const Navbar = () => {
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
 					<NextLink className="flex justify-start items-center gap-1" href="/">
-						<Image src="https://www.sokada.co.uk//wp-content//uploads//2019//10//favicon.ico" alt="Logo"/>
-						<p className="font-bold text-inherit">Stephen&apos;s Tools</p>
+						<img width={120} src="https://www.sokada.co.uk/wp-content/uploads/2022/06/logo-white1.webp" alt="Logo"/>
 					</NextLink>
 				</NavbarBrand>
 				<ul className="hidden lg:flex gap-4 justify-start ml-2">
