@@ -93,7 +93,7 @@ export default function Home() {
 
 				
 				<div className='flex flex-col gap-10'>
-					<Card className='w-full'>
+					<Card className='w-full pb-5'>
 						<Suspense fallback={<p>Loading...</p>}>
 							<CardHeader className='flex flex-col text-center gap-5'>
 								<div className='md:inline-block mb-10 inline-flex flex-col'>
@@ -164,7 +164,7 @@ export default function Home() {
 					<div className='flex flex-col'>
 						<h2 className={`${title({color: 'green'})} pb-2`}>Plugins</h2>
 
-						<div className='grid grid-cols-2 gap-5 mt-10'>
+						<div className='grid md:grid-cols-2 gap-5 mt-10 grid-cols-1'>
 							{plugins.map(plugin => (
 								<Card key = {plugin.name} className='w-full'>
 									<CardHeader className='flex flex-col text-center'>
