@@ -101,7 +101,7 @@ export default function Home() {
 									<h2 className={title({color:'green'})}>Website Stats</h2>
 								</div>
 								<div>
-									<Skeleton isLoaded = {isLoaded}>
+									<Skeleton isLoaded = {isLoaded} className='rounded-xl'>
 										<div className='flex md:flex-row gap-5 flex-col'>
 											<CircularProgress
 												label="Performance"
