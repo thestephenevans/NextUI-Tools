@@ -12,13 +12,14 @@ import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import Users from "@/app/data/users";
 
-import { fetchUsers } from '@/app/api/sokada';
-import { UserType } from '@/app/types';
+import { fetchUsers, fetchPlugins } from '@/app/api/sokada';
+import { UserType, Plugins } from '@/app/types';
 import { Performance } from '@/app/types';
 import { report } from '@/app/data/lighthouse';
 
 export default function Home() {
 	const [users, setUsers] = useState<UserType[]>([]);
+	const [plugins, setPlugins] = useState<Plugins[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [performance, setPerformance] = useState(0);
 	const [accessibility, setAccessibility] = useState(0);
@@ -45,7 +46,17 @@ export default function Home() {
             }
         };
 
+		const loadPlugins = async () => {
+			try {
+				const data = await fetchPlugins();
+                setPlugins(data);
+			} catch (error) {
+				console.error('Error fetching plugins:', error);
+			}
+		}
+
         loadUsers();
+		loadPlugins();
 		console.log(performance);
     }, []);
 
@@ -77,7 +88,7 @@ export default function Home() {
 				</div>
 
 				
-				<div>
+				<div className='flex flex-col gap-10'>
 					<Card className='w-full'>
 						<Suspense fallback={<p>Loading...</p>}>
 							<CardHeader className='flex flex-col text-center gap-5'>
@@ -141,6 +152,25 @@ export default function Home() {
 							</CardHeader>
 						</Suspense>
 					</Card>	
+
+					<div className='flex flex-col'>
+						<h2 className={`${title({color: 'green'})} pb-2`}>Plugins</h2>
+
+						<div className='grid grid-cols-2 gap-5 mt-10'>
+							{plugins.map(plugin => (
+								<Card className='w-full'>
+									<CardHeader className='flex flex-col text-center'>
+										<span className='text-xl'>{plugin.name}</span>
+										<Link href = {plugin.plugin_uri} isExternal>{plugin.plugin_uri}</Link>
+									</CardHeader>
+									<CardBody className='flex flex-col text-center gap-3'>
+										{plugin.description.raw}
+										<span className='text-2xl'>{plugin.version}</span>
+									</CardBody>
+								</Card>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>		
 		</section>

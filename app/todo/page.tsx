@@ -32,7 +32,7 @@ export default function Page(){
             setOriginalList(JSON.parse(storedList));
             setIsLoaded(true);
         }
-    }, []); // Empty dependency array to run this effect only once when component mounts
+    }, []);
 
     function updateList(newList: Todo[]) {
         localStorage.setItem('todoList', JSON.stringify(newList));

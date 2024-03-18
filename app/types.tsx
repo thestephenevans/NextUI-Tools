@@ -1,3 +1,5 @@
+import { StringLiteral } from "typescript";
+
 export interface Post {
     id: number;
     title: {
@@ -42,4 +44,11 @@ export interface Performance {
             score: number;
         }
     }
+}
+
+export interface Plugins {
+    name: string;
+    description: {raw: string;}
+    plugin_uri: string;
+    version: string;
 }
