@@ -76,7 +76,7 @@ export default function Home() {
 				</h1>
 			</div>
 			<div className='flex md:flex-col justify-between flex-col gap-10'>
-				<div className='flex flex-row gap-5'>
+				<div className='flex md:flex-row gap-5 flex-col'>
 					{users.map((user, key) => (
 						<Card key={key} className='w-full flex flex-col' isHoverable isPressable onPress={() => window.open(user.link)} radius='sm'>
 							<Suspense fallback={<p>Loading...</p>}>
