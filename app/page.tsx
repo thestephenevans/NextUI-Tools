@@ -12,9 +12,8 @@ import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import Users from "@/app/data/users";
 
-import { fetchUsers, fetchPlugins } from '@/app/api/sokada';
+import { fetchUsers, fetchPlugins, fetchPerformance } from '@/app/api/sokada';
 import { UserType, Plugins } from '@/app/types';
-import { Performance } from '@/app/types';
 import { report } from '@/app/data/lighthouse';
 
 export default function Home() {
@@ -25,22 +24,14 @@ export default function Home() {
 	const [accessibility, setAccessibility] = useState(0);
 	const [bestPractices, setBestPractices] = useState(0);
 	const [seo, setSeo] = useState(0);
-
-	function toggleLoad(){
-		setIsLoaded(!isLoaded);
-	}
+	const [stats, setStats] = useState([]);
+	
 
 	useEffect(() => {
-		setPerformance(report.categories.performance.score)
-		setAccessibility(report.categories.accessibility.score)
-		setBestPractices(report.categories.best_practices.score)
-		setSeo(report.categories.seo.score)
-		console.log(isLoaded);
         const loadUsers = async () => {
             try {
                 const data = await fetchUsers();
                 setUsers(data);
-				toggleLoad();
             } catch (error) {
                 console.error('Error fetching posts:', error);
             }
@@ -55,9 +46,22 @@ export default function Home() {
 			}
 		}
 
+		const loadPerformance = async () => {
+			try {
+				const data = await fetchPerformance();
+				setPerformance(data.lighthouseResult.categories.performance.score)
+				setAccessibility(data.lighthouseResult.categories.accessibility.score)
+				setBestPractices(data.lighthouseResult.categories["best-practices"].score)
+				setSeo(data.lighthouseResult.categories.seo.score)
+				setIsLoaded(true);
+			} catch (error) {
+				console.error('Error fetching performance:', error);
+			}
+		}
+
         loadUsers();
 		loadPlugins();
-		console.log(performance);
+		loadPerformance();
     }, []);
 
 	return (
@@ -96,58 +100,62 @@ export default function Home() {
 									<h2 className={title()}>Sokada </h2>
 									<h2 className={title({color:'green'})}>Website Stats</h2>
 								</div>
-								<div className='flex md:flex-row gap-5 flex-col'>
-									<CircularProgress
-										label="Performance"
-										size="lg"
-										value={performance * 100}
-										color={(performance * 100) < 90 ? "warning" : "success"}
-										showValueLabel={true}
-										strokeWidth={4}
-										classNames={{
-											svg: "w-36 h-36 drop-shadow-md",
-											value: "text-3xl font-semibold text-white",
-										}}
-									/>
+								<div>
+									<Skeleton isLoaded = {isLoaded}>
+										<div className='flex md:flex-row gap-5 flex-col'>
+											<CircularProgress
+												label="Performance"
+												size="lg"
+												value={performance * 100}
+												color={(performance * 100) < 90 ? "warning" : "success"}
+												showValueLabel={true}
+												strokeWidth={4}
+												classNames={{
+													svg: "w-36 h-36 drop-shadow-md",
+													value: "text-3xl font-semibold text-white",
+												}}
+											/>
 
-									<CircularProgress
-										label="Accessibility"
-										size="lg"
-										value={accessibility * 100}
-										color={(accessibility * 100) < 70 ? "warning" : "success"}
-										showValueLabel={true}
-										strokeWidth={4}
-										classNames={{
-											svg: "w-36 h-36 drop-shadow-md",
-											value: "text-3xl font-semibold text-white",
-										}}
-									/>
+											<CircularProgress
+												label="Accessibility"
+												size="lg"
+												value={accessibility * 100}
+												color={(accessibility * 100) < 70 ? "warning" : "success"}
+												showValueLabel={true}
+												strokeWidth={4}
+												classNames={{
+													svg: "w-36 h-36 drop-shadow-md",
+													value: "text-3xl font-semibold text-white",
+												}}
+											/>
 
-									<CircularProgress
-										label="Best Practices"
-										size="lg"
-										value={bestPractices * 100}
-										color={(bestPractices * 100) < 70 ? "warning" : "success"}
-										showValueLabel={true}
-										strokeWidth={4}
-										classNames={{
-											svg: "w-36 h-36 drop-shadow-md",
-											value: "text-3xl font-semibold text-white",
-										}}
-									/>
+											<CircularProgress
+												label="Best Practices"
+												size="lg"
+												value={bestPractices * 100}
+												color={(bestPractices * 100) < 70 ? "warning" : "success"}
+												showValueLabel={true}
+												strokeWidth={4}
+												classNames={{
+													svg: "w-36 h-36 drop-shadow-md",
+													value: "text-3xl font-semibold text-white",
+												}}
+											/>
 
-									<CircularProgress
-										label="SEO"
-										size="lg"
-										value={seo * 100}
-										color={(seo * 100) < 70 ? "warning" : "success"}
-										showValueLabel={true}
-										strokeWidth={4}
-										classNames={{
-											svg: "w-36 h-36 drop-shadow-md",
-											value: "text-3xl font-semibold text-white",
-										}}
-									/>
+											<CircularProgress
+												label="SEO"
+												size="lg"
+												value={seo * 100}
+												color={(seo * 100) < 70 ? "warning" : "success"}
+												showValueLabel={true}
+												strokeWidth={4}
+												classNames={{
+													svg: "w-36 h-36 drop-shadow-md",
+													value: "text-3xl font-semibold text-white",
+												}}
+											/>
+										</div>
+									</Skeleton>
 								</div>
 							</CardHeader>
 						</Suspense>

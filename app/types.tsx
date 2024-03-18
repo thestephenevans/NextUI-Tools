@@ -29,23 +29,6 @@ export interface UserType {
     };
 }
 
-export interface Performance {
-    categories: {
-        performance: {
-            score: number;
-        }
-        accessibility: {
-            score: number;
-        }
-        best_practices: {
-            score: number;
-        }
-        seo: {
-            score: number;
-        }
-    }
-}
-
 export interface Plugins {
     name: string;
     description: {raw: string;}
