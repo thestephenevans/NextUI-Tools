@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use server'
 
 import { Post, UserType, Plugins } from '@/app/types'
@@ -38,7 +37,7 @@ export async function fetchPlugins(): Promise<Plugins[]> {
     return response.json();
 }
 
-export async function fetchPerformance(): Promise {
+export async function fetchPerformance(): Promise<any> {
     noStore();
     const response = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://www.sokada.co.uk&category=performance&category=accessibility&category=best-practices&category=seo`,
         {
