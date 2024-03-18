@@ -41,8 +41,10 @@ export default function Page(){
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
-        setList([...list, {id: Date.now(), value: input, completed: false}]);
-        setInput('');
+        if(input != ''){
+            setList([...list, {id: Date.now(), value: input, completed: false}]);
+            setInput('');
+        }
     }
 
     function handleCompleted(id: Number, completed: boolean) {
