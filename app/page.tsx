@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code"
-import { Card, CardHeader, CardBody, Avatar, User, Skeleton, CircularProgress } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Avatar, User, Skeleton, CircularProgress, Divider } from "@nextui-org/react";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
@@ -72,17 +72,13 @@ export default function Home() {
 					Tools
 				</h1>
 			</div>
-			<div className='flex md:flex-row-reverse justify-between flex-col-reverse gap-10'>
-				<div className='flex flex-col gap-5'>
+			<div className='flex md:flex-col justify-between flex-col gap-10'>
+				<div className='flex flex-row gap-5'>
 					{users.map((user, key) => (
-						<Card key={key} className='w-full'>
+						<Card key={key} className='w-full flex flex-col' isHoverable isPressable onPress={() => window.open(user.link)}>
 							<Suspense fallback={<p>Loading...</p>}>
 								<CardHeader>
-									<User name = {user.name} description = {(
-										<Link className = "text-[12px]" href={user.link} size="sm" isExternal>
-											{user.link}
-										</Link>
-									)} avatarProps={{
+									<User name = {user.name} avatarProps={{
 										src: user.avatar_urls[96]
 									}} />
 								</CardHeader>
@@ -112,7 +108,7 @@ export default function Home() {
 												strokeWidth={4}
 												classNames={{
 													svg: "w-36 h-36 drop-shadow-md",
-													value: "text-3xl font-semibold text-white",
+													value: "text-3xl font-semibold",
 												}}
 											/>
 
@@ -125,7 +121,7 @@ export default function Home() {
 												strokeWidth={4}
 												classNames={{
 													svg: "w-36 h-36 drop-shadow-md",
-													value: "text-3xl font-semibold text-white",
+													value: "text-3xl font-semibold",
 												}}
 											/>
 
@@ -138,7 +134,7 @@ export default function Home() {
 												strokeWidth={4}
 												classNames={{
 													svg: "w-36 h-36 drop-shadow-md",
-													value: "text-3xl font-semibold text-white",
+													value: "text-3xl font-semibold",
 												}}
 											/>
 
@@ -151,7 +147,7 @@ export default function Home() {
 												strokeWidth={4}
 												classNames={{
 													svg: "w-36 h-36 drop-shadow-md",
-													value: "text-3xl font-semibold text-white",
+													value: "text-3xl font-semibold",
 												}}
 											/>
 										</div>
@@ -166,15 +162,18 @@ export default function Home() {
 
 						<div className='grid md:grid-cols-2 gap-5 mt-10 grid-cols-1'>
 							{plugins.map(plugin => (
-								<Card key = {plugin.name} className='w-full'>
+								<Card isHoverable isPressable key = {plugin.name} className='w-full' onPress={() =>  window.open(plugin.plugin_uri)}>
 									<CardHeader className='flex flex-col text-center'>
 										<span className='text-xl'>{plugin.name}</span>
-										<Link href = {plugin.plugin_uri} isExternal>{plugin.plugin_uri}</Link>
 									</CardHeader>
+									<Divider/>
 									<CardBody className='flex flex-col text-center gap-3'>
 										{plugin.description.raw}
-										<span className='text-2xl'>{plugin.version}</span>
 									</CardBody>
+									<Divider/>
+									<CardFooter className='flex flex-col text-center gap-3'>
+										<span className='text-2xl'>{plugin.version}</span>
+                                    </CardFooter>
 								</Card>
 							))}
 						</div>
