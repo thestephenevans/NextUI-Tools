@@ -1,7 +1,7 @@
 'use server'
 
 import { Post, UserType, Plugins } from '@/app/types'
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_noStore as noStore, revalidatePath } from 'next/cache';
 
 export async function fetchPosts(): Promise<Post[]> {
     noStore();
@@ -50,6 +50,6 @@ export async function fetchPerformance(): Promise<any> {
     if(!response.ok){
         throw new Error('Failed to fetch performance');
     }
-
+    revalidatePath('/');
     return response.json();
 }
