@@ -158,7 +158,7 @@ export default function Home() {
 
 						<div className='grid grid-cols-2 gap-5 mt-10'>
 							{plugins.map(plugin => (
-								<Card className='w-full'>
+								<Card key = {plugin.name} className='w-full'>
 									<CardHeader className='flex flex-col text-center'>
 										<span className='text-xl'>{plugin.name}</span>
 										<Link href = {plugin.plugin_uri} isExternal>{plugin.plugin_uri}</Link>
