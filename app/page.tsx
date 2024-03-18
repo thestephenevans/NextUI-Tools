@@ -46,6 +46,11 @@ export default function Home() {
 			}
 		}
 
+        loadUsers();
+		loadPlugins();
+    }, []);
+
+	useEffect(() => {
 		const loadPerformance = async () => {
 			try {
 				const data = await fetchPerformance();
@@ -59,10 +64,8 @@ export default function Home() {
 			}
 		}
 
-        loadUsers();
-		loadPlugins();
 		loadPerformance();
-    }, []);
+	}, [users]);
 
 	return (
 		<section className="flex flex-col gap-4 py-8 md:py-10">
@@ -75,7 +78,7 @@ export default function Home() {
 			<div className='flex md:flex-col justify-between flex-col gap-10'>
 				<div className='flex flex-row gap-5'>
 					{users.map((user, key) => (
-						<Card key={key} className='w-full flex flex-col' isHoverable isPressable onPress={() => window.open(user.link)}>
+						<Card key={key} className='w-full flex flex-col' isHoverable isPressable onPress={() => window.open(user.link)} radius='sm'>
 							<Suspense fallback={<p>Loading...</p>}>
 								<CardHeader>
 									<User name = {user.name} avatarProps={{
@@ -89,7 +92,7 @@ export default function Home() {
 
 				
 				<div className='flex flex-col gap-10'>
-					<Card className='w-full pb-5'>
+					<Card className='w-full pb-5' radius='sm'>
 						<Suspense fallback={<p>Loading...</p>}>
 							<CardHeader className='flex flex-col text-center gap-5'>
 								<div className='md:inline-block mb-10 inline-flex flex-col'>
@@ -162,7 +165,7 @@ export default function Home() {
 
 						<div className='grid md:grid-cols-2 gap-5 mt-10 grid-cols-1'>
 							{plugins.map(plugin => (
-								<Card isHoverable isPressable key = {plugin.name} className='w-full' onPress={() =>  window.open(plugin.plugin_uri)}>
+								<Card isHoverable isPressable key = {plugin.name} className='w-full' onPress={() =>  window.open(plugin.plugin_uri)} radius='sm'>
 									<CardHeader className='flex flex-col text-center'>
 										<span className='text-xl'>{plugin.name}</span>
 									</CardHeader>
