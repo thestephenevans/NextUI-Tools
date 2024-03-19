@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code"
-import { Card, CardHeader, CardBody, CardFooter, Avatar, User, Skeleton, CircularProgress, Divider } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Avatar, User, Skeleton, CircularProgress, Divider, Button } from "@nextui-org/react";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
@@ -19,12 +19,13 @@ import { report } from '@/app/data/lighthouse';
 export default function Home() {
 	const [users, setUsers] = useState<UserType[]>([]);
 	const [plugins, setPlugins] = useState<Plugins[]>([]);
-	const [isLoaded, setIsLoaded] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(true);
 	const [performance, setPerformance] = useState(0);
 	const [accessibility, setAccessibility] = useState(0);
 	const [bestPractices, setBestPractices] = useState(0);
 	const [seo, setSeo] = useState(0);
 	const [stats, setStats] = useState([]);
+	const [isRefreshed, setIsRefreshed] = useState(false);
 	
 
 	useEffect(() => {
@@ -63,9 +64,8 @@ export default function Home() {
 				console.error('Error fetching performance:', error);
 			}
 		}
-
 		loadPerformance();
-	}, [users]);
+	}, [isRefreshed]);
 
 	return (
 		<section className="flex flex-col gap-4 py-8 md:py-10">
@@ -155,6 +155,7 @@ export default function Home() {
 											/>
 										</div>
 									</Skeleton>
+									<Button className="mt-10" onPress={() => setIsRefreshed(!isRefreshed)}>Scan</Button>
 								</div>
 							</CardHeader>
 						</Suspense>
