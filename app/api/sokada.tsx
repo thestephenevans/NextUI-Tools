@@ -39,7 +39,7 @@ export async function fetchPlugins(): Promise<Plugins[]> {
 
 export async function fetchPerformance(): Promise<any> {
     noStore();
-    const response = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://www.sokada.co.uk&category=performance`,
+    const response = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://www.sokada.co.uk&category=performance&category=accessibility&category=best-practices&category=seo`,
         {
             headers: {
                 "Authorization": `${process.env.PERFTOKEN}`

@@ -55,9 +55,9 @@ export default function Home() {
 			try {
 				const data = await fetchPerformance();
 				setPerformance(data.lighthouseResult.categories.performance.score)
-				setAccessibility(report.categories.accessibility.score)
-				setBestPractices(report.categories.best_practices.score)
-				setSeo(report.categories.seo.score)
+				setAccessibility(data.lighthouseResult.categories.accessibility.score)
+				setBestPractices(data.lighthouseResult.categories["best-practices"].score)
+				setSeo(data.lighthouseResult.categories.seo.score)
 				setIsLoaded(true);
 			} catch (error) {
 				console.error('Error fetching performance:', error);
@@ -76,7 +76,7 @@ export default function Home() {
 				</h1>
 			</div>
 			<div className='flex md:flex-col justify-between flex-col gap-10'>
-				<div className='flex md:flex-row gap-5 flex-col'>
+				<div className='flex flex-row gap-5'>
 					{users.map((user, key) => (
 						<Card key={key} className='w-full flex flex-col' isHoverable isPressable onPress={() => window.open(user.link)} radius='sm'>
 							<Suspense fallback={<p>Loading...</p>}>
