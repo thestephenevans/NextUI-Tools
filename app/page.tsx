@@ -55,9 +55,9 @@ export default function Home() {
 			try {
 				const data = await fetchPerformance();
 				setPerformance(data.lighthouseResult.categories.performance.score)
-				setAccessibility(data.lighthouseResult.categories.accessibility.score)
-				setBestPractices(data.lighthouseResult.categories["best-practices"].score)
-				setSeo(data.lighthouseResult.categories.seo.score)
+				setAccessibility(report.categories.accessibility.score)
+				setBestPractices(report.categories.best_practices.score)
+				setSeo(report.categories.seo.score)
 				setIsLoaded(true);
 			} catch (error) {
 				console.error('Error fetching performance:', error);
