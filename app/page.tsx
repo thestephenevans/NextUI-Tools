@@ -119,7 +119,7 @@ export default function Home() {
 												label="Accessibility"
 												size="lg"
 												value={accessibility * 100}
-												color={(accessibility * 100) < 70 ? "warning" : "success"}
+												color={(accessibility * 100) < 90 ? "warning" : "success"}
 												showValueLabel={true}
 												strokeWidth={4}
 												classNames={{
@@ -132,7 +132,7 @@ export default function Home() {
 												label="Best Practices"
 												size="lg"
 												value={bestPractices * 100}
-												color={(bestPractices * 100) < 70 ? "warning" : "success"}
+												color={(bestPractices * 100) < 90 ? "warning" : "success"}
 												showValueLabel={true}
 												strokeWidth={4}
 												classNames={{
@@ -145,7 +145,7 @@ export default function Home() {
 												label="SEO"
 												size="lg"
 												value={seo * 100}
-												color={(seo * 100) < 70 ? "warning" : "success"}
+												color={(seo * 100) < 90 ? "warning" : "success"}
 												showValueLabel={true}
 												strokeWidth={4}
 												classNames={{
